@@ -1,0 +1,21 @@
+name: Zip
+
+on:
+  release:
+    types: [published]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-12
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    - name: Build executable
+      run: ./do.sh build
+    - name: Archive executable
+      uses: actions/upload-artifact@v3
+      with:
+        name: Renewed
+        path: renewed*.zip
