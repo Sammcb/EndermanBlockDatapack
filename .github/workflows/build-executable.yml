@@ -17,5 +17,5 @@ jobs:
     - name: Archive executable
       uses: actions/upload-artifact@v3
       with:
-        name: Renewed
-        path: renewed*.zip
+        name: EndermanBlock
+        path: enderman-block*.zip
