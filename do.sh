@@ -16,8 +16,11 @@ help() {
 }
 
 build() {
+	local root_directory="datapack"
 	clean
-	zip -q -r ${ZIP_NAME} data pack.mcmeta pack.png
+	cd ${root_directory}
+	zip -q -r "../${ZIP_NAME}" data pack.mcmeta pack.png
+	cd ..
 }
 
 clean() {
