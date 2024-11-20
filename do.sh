@@ -1,7 +1,7 @@
 #!/bin/sh
 
 VERSION=1.1.1
-MINECRAFT_VERSION=1.21.0
+MINECRAFT_VERSION=1.21.3
 
 ZIP_NAME="enderman-block-${VERSION}-${MINECRAFT_VERSION}.zip"
 
@@ -16,8 +16,11 @@ help() {
 }
 
 build() {
+	local root_directory="datapack"
 	clean
-	zip -q -r ${ZIP_NAME} data pack.mcmeta pack.png
+	cd ${root_directory}
+	zip -q -r "../${ZIP_NAME}" data pack.mcmeta pack.png
+	cd ..
 }
 
 clean() {
