@@ -1,6 +1,6 @@
 {
 	"pack": {
-		"description": "Prevent endermen from picking up blocks."
+		"description": "Prevent endermen from picking up blocks.",
 		"pack_format": 57,
 		"supported_formats": [57]
 	}

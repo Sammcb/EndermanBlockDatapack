@@ -1,6 +1,6 @@
 #!/bin/sh
 
-VERSION=1.2.1
+VERSION=1.2.2
 MINECRAFT_VERSION=1.21.3
 
 ZIP_NAME="enderman-block-${VERSION}-${MINECRAFT_VERSION}.zip"
