@@ -1,11 +1,9 @@
 name: Zip
-
 on:
   release:
     types: [published]
-  pull_request:
-  workflow_dispatch:
-
+  pull_request: null
+  workflow_dispatch: null
 jobs:
   build:
     runs-on: macos-13
