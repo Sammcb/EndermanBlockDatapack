@@ -21,8 +21,8 @@
 
 			buildDirectory = ".build";
 			datapackName = "enderman-block";
-			version = "1.2.3";
-			minecraftVersion = "1.21.3";
+			version = "1.3.0";
+			minecraftVersion = "1.21.4";
 
 			buildScript = pkgs.writeShellApplication {
 				name = "build";
