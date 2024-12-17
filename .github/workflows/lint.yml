@@ -7,6 +7,8 @@ on:
 jobs:
   checks:
     runs-on: ubuntu-24.04
+    permissions:
+      security-events: write
     steps:
     - name: Harden runner
       uses: step-security/harden-runner@v2.10.2
@@ -24,6 +26,8 @@ jobs:
           *.cloudfront.net:443
     - name: Checkout repository
       uses: actions/checkout@v4.2.2
+      with:
+        persist-credentials: false
     - name: Install nix
       uses: DeterminateSystems/nix-installer-action@v16
       with:
@@ -47,3 +51,12 @@ jobs:
         fail-mode: true
     - name: Check
       run: nix flake check -L
+    - name: Check workflows
+      run: zizmor --format sarif . > workflow_results.sarif
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Upload workflow report
+      uses: github/codeql-action/upload-sarif@v3.27.9
+      with:
+        sarif_file: workflow_results.sarif
+        category: zizmor
