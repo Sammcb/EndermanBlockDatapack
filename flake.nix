@@ -42,6 +42,10 @@
 				nativeBuildInputs = [flakeCheckerPackage] ++ (with pkgs; [zip editorconfig-checker zizmor]);
 			};
 
+			devShells.zizmor = pkgs.mkShell {
+				nativeBuildInputs = with pkgs; [zizmor];
+			};
+
 			checks = {
 				editorconfig = pkgs.stdenvNoCC.mkDerivation {
 					name = "editorconfig-lint";

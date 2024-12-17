@@ -53,7 +53,7 @@ jobs:
     - name: Check
       run: nix flake check -L
     - name: Check workflows
-      run: nix develop -c zizmor --format sarif . > workflow_results.sarif
+      run: nix develop .#zizmor -c zizmor --format sarif . > workflow_results.sarif
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: Upload workflow report
