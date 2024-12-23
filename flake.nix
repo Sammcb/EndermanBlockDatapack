@@ -70,15 +70,15 @@
 				# This takes a long time to install in a runner
 				# Disabling till nix hopefully allows running individual checks
 
-				flake = pkgs.stdenvNoCC.mkDerivation {
-					name = "flake-checker";
-					src = self;
-					dontBuild = true;
-					doCheck = true;
-					nativeBuildInputs = [flakeCheckerPackage];
-					checkPhase = "flake-checker --no-telemetry";
-					installPhase = "touch $out";
-				};
+				# flake = pkgs.stdenvNoCC.mkDerivation {
+				# 	name = "flake-checker";
+				# 	src = self;
+				# 	dontBuild = true;
+				# 	doCheck = true;
+				# 	nativeBuildInputs = [flakeCheckerPackage];
+				# 	checkPhase = "flake-checker --no-telemetry";
+				# 	installPhase = "touch $out";
+				# };
 			};
 
 			packages = {
