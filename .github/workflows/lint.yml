@@ -1,12 +1,8 @@
 name: Lint
-on:
-  release:
-    types: [published]
-  pull_request: null
-  workflow_dispatch: null
+on: workflow_call
 permissions: {}
 jobs:
-  checks:
+  lint:
     runs-on: ubuntu-24.04-arm
     permissions:
       security-events: write
