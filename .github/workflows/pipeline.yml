@@ -4,6 +4,8 @@ permissions: {}
 jobs:
   lint:
     uses: ./.github/workflows/lint.yml
+    permissions:
+      security-events: write
   build:
     runs-on: ubuntu-24.04-arm
     steps:
