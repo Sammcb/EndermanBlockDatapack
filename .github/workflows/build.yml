@@ -5,7 +5,10 @@ jobs:
   build:
     strategy:
       matrix:
-        artifact: [{make-target: build-datapack, name: datapack, path-prefix: enderman-block}]
+        artifact:
+        - name: datapack
+          make-target: build-datapack
+          path-prefix: enderman-block
     runs-on: ubuntu-24.04-arm
     name: ${{ matrix.artifact.name }}
     steps:
@@ -13,9 +16,10 @@ jobs:
       uses: step-security/harden-runner@v2.11.0
       with:
         egress-policy: block
-        # allowed-endpoints: >
-        #   github.com:443
-        #   api.github.com:443
+        allowed-endpoints: >
+          github.com:443
+          api.github.com:443
+          api.securityscorecards.dev:443
         #   cache.nixos.org:443
         #   install.determinate.systems:443
         #   *.s3.dualstack.us-east-2.amazonaws.com:443

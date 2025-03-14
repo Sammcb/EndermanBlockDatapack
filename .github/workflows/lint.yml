@@ -9,9 +9,10 @@ jobs:
       uses: step-security/harden-runner@v2.11.0
       with:
         egress-policy: block
-        # allowed-endpoints: >
-        #   github.com:443
-        #   api.github.com:443
+        allowed-endpoints: >
+          github.com:443
+          api.github.com:443
+          api.securityscorecards.dev:443
         #   cache.nixos.org:443
         #   tarballs.nixos.org:443
         #   install.determinate.systems:443
@@ -46,9 +47,10 @@ jobs:
       uses: step-security/harden-runner@v2.11.0
       with:
         egress-policy: block
-        # allowed-endpoints: >
-        #   github.com:443
-        #   api.github.com:443
+        allowed-endpoints: >
+          github.com:443
+          api.github.com:443
+          api.securityscorecards.dev:443
         #   cache.nixos.org:443
         #   tarballs.nixos.org:443
         #   install.determinate.systems:443
@@ -78,9 +80,10 @@ jobs:
       uses: step-security/harden-runner@v2.11.0
       with:
         egress-policy: block
-        # allowed-endpoints: >
-        #   github.com:443
-        #   api.github.com:443
+        allowed-endpoints: >
+          github.com:443
+          api.github.com:443
+          api.securityscorecards.dev:443
         #   cache.nixos.org:443
         #   tarballs.nixos.org:443
         #   install.determinate.systems:443
@@ -112,9 +115,10 @@ jobs:
       uses: step-security/harden-runner@v2.11.0
       with:
         egress-policy: block
-        # allowed-endpoints: >
-        #   github.com:443
-        #   api.github.com:443
+        allowed-endpoints: >
+          github.com:443
+          api.github.com:443
+          api.securityscorecards.dev:443
         #   cache.nixos.org:443
         #   tarballs.nixos.org:443
         #   install.determinate.systems:443
