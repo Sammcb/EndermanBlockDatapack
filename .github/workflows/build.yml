@@ -7,18 +7,18 @@ jobs:
       matrix:
         artifact: [{make-target: build-datapack, name: datapack, path-prefix: enderman-block}]
     runs-on: ubuntu-24.04-arm
-    name: build ${{ matrix.artifact.name }}
+    name: ${{ matrix.artifact.name }}
     steps:
     - name: Harden runner
       uses: step-security/harden-runner@v2.11.0
       with:
         egress-policy: block
-        allowed-endpoints: >
-          github.com:443
-          api.github.com:443
-          cache.nixos.org:443
-          install.determinate.systems:443
-          *.s3.dualstack.us-east-2.amazonaws.com:443
+        # allowed-endpoints: >
+        #   github.com:443
+        #   api.github.com:443
+        #   cache.nixos.org:443
+        #   install.determinate.systems:443
+        #   *.s3.dualstack.us-east-2.amazonaws.com:443
     - name: Checkout repository
       uses: actions/checkout@v4.2.2
       with:

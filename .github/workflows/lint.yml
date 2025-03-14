@@ -9,18 +9,18 @@ jobs:
       uses: step-security/harden-runner@v2.11.0
       with:
         egress-policy: block
-        allowed-endpoints: >
-          github.com:443
-          api.github.com:443
-          cache.nixos.org:443
-          tarballs.nixos.org:443
-          install.determinate.systems:443
-          api.flakehub.com:443
-          static.rust-lang.org:443
-          static.crates.io:443
-          crates.io:443
-          *.s3.dualstack.us-east-2.amazonaws.com:443
-          *.cloudfront.net:443
+        # allowed-endpoints: >
+        #   github.com:443
+        #   api.github.com:443
+        #   cache.nixos.org:443
+        #   tarballs.nixos.org:443
+        #   install.determinate.systems:443
+        #   api.flakehub.com:443
+        #   static.rust-lang.org:443
+        #   static.crates.io:443
+        #   crates.io:443
+        #   *.s3.dualstack.us-east-2.amazonaws.com:443
+        #   *.cloudfront.net:443
     - name: Checkout repository
       uses: actions/checkout@v4.2.2
       with:
@@ -46,18 +46,18 @@ jobs:
       uses: step-security/harden-runner@v2.11.0
       with:
         egress-policy: block
-        allowed-endpoints: >
-          github.com:443
-          api.github.com:443
-          cache.nixos.org:443
-          tarballs.nixos.org:443
-          install.determinate.systems:443
-          api.flakehub.com:443
-          static.rust-lang.org:443
-          static.crates.io:443
-          crates.io:443
-          *.s3.dualstack.us-east-2.amazonaws.com:443
-          *.cloudfront.net:443
+        # allowed-endpoints: >
+        #   github.com:443
+        #   api.github.com:443
+        #   cache.nixos.org:443
+        #   tarballs.nixos.org:443
+        #   install.determinate.systems:443
+        #   api.flakehub.com:443
+        #   static.rust-lang.org:443
+        #   static.crates.io:443
+        #   crates.io:443
+        #   *.s3.dualstack.us-east-2.amazonaws.com:443
+        #   *.cloudfront.net:443
     - name: Checkout repository
       uses: actions/checkout@v4.2.2
       with:
@@ -78,18 +78,18 @@ jobs:
       uses: step-security/harden-runner@v2.11.0
       with:
         egress-policy: block
-        allowed-endpoints: >
-          github.com:443
-          api.github.com:443
-          cache.nixos.org:443
-          tarballs.nixos.org:443
-          install.determinate.systems:443
-          api.flakehub.com:443
-          static.rust-lang.org:443
-          static.crates.io:443
-          crates.io:443
-          *.s3.dualstack.us-east-2.amazonaws.com:443
-          *.cloudfront.net:443
+        # allowed-endpoints: >
+        #   github.com:443
+        #   api.github.com:443
+        #   cache.nixos.org:443
+        #   tarballs.nixos.org:443
+        #   install.determinate.systems:443
+        #   api.flakehub.com:443
+        #   static.rust-lang.org:443
+        #   static.crates.io:443
+        #   crates.io:443
+        #   *.s3.dualstack.us-east-2.amazonaws.com:443
+        #   *.cloudfront.net:443
     - name: Checkout repository
       uses: actions/checkout@v4.2.2
       with:
@@ -112,18 +112,18 @@ jobs:
       uses: step-security/harden-runner@v2.11.0
       with:
         egress-policy: block
-        allowed-endpoints: >
-          github.com:443
-          api.github.com:443
-          cache.nixos.org:443
-          tarballs.nixos.org:443
-          install.determinate.systems:443
-          api.flakehub.com:443
-          static.rust-lang.org:443
-          static.crates.io:443
-          crates.io:443
-          *.s3.dualstack.us-east-2.amazonaws.com:443
-          *.cloudfront.net:443
+        # allowed-endpoints: >
+        #   github.com:443
+        #   api.github.com:443
+        #   cache.nixos.org:443
+        #   tarballs.nixos.org:443
+        #   install.determinate.systems:443
+        #   api.flakehub.com:443
+        #   static.rust-lang.org:443
+        #   static.crates.io:443
+        #   crates.io:443
+        #   *.s3.dualstack.us-east-2.amazonaws.com:443
+        #   *.cloudfront.net:443
     - name: Checkout repository
       uses: actions/checkout@v4.2.2
       with:
