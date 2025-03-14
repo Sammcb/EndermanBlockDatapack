@@ -1,0 +1,24 @@
+name: Setup secure nix runner
+description: Installs a specified version of nix and hardens the runner
+runs:
+  using: composite
+  steps:
+  - name: Harden runner
+    uses: step-security/harden-runner@v2.11.0
+    with:
+      egress-policy: block
+      allowed-endpoints: >
+        github.com:443
+        api.github.com:443
+        api.securityscorecards.dev:443
+  - name: Checkout repository
+    uses: actions/checkout@v4.2.2
+    with:
+      persist-credentials: false
+  - name: Install nix
+    uses: DeterminateSystems/nix-installer-action@v16
+    with:
+      # Commit corresponds to tag v0.30.0 and installs nix v2.24.0.
+      source-revision: b4bc792f575248e63e92c95cd9d334d01ba86b71
+      # Disable telemetry.
+      diagnostic-endpoint: ""
