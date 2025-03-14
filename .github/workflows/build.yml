@@ -7,6 +7,7 @@ jobs:
       matrix:
         artifact: [{make-target: build-datapack, name: datapack, path-prefix: enderman-block}]
     runs-on: ubuntu-24.04-arm
+    name: build ${{ matrix.artifact.name }}
     steps:
     - name: Harden runner
       uses: step-security/harden-runner@v2.11.0
