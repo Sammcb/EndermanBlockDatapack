@@ -1,12 +1,11 @@
-name: Pipeline
-on: [pull_request, workflow_dispatch]
+name: Build
+on: workflow_call
 permissions: {}
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
-  lint:
-    uses: ./.github/workflows/lint.yml
-    permissions:
-      security-events: write
-  build:
+  datapack:
     runs-on: ubuntu-24.04-arm
     steps:
     - name: Harden runner
@@ -30,12 +29,12 @@ jobs:
         source-revision: b4bc792f575248e63e92c95cd9d334d01ba86b71
         # Disable telemetry.
         diagnostic-endpoint: ""
-    - name: Build
-      run: nix run .
-    - name: Archive executable
+    - name: Build datapack
+      run: nix run .#build -c make build-datapack
+    - name: Upload artifact
       uses: actions/upload-artifact@v4.6.1
       with:
-        name: EndermanBlock
-        path: .build/*.zip
+        name: datapack
+        path: enderman-block-*.zip
         include-hidden-files: true
         if-no-files-found: error
