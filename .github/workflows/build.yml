@@ -9,7 +9,8 @@ jobs:
         - name: datapack
           make-target: build-datapack
           path-prefix: enderman-block
-    runs-on: ubuntu-24.04-arm
+    # runs-on: ubuntu-24.04-arm
+    runs-on: ubuntu-24.04
     name: ${{ matrix.artifact.name }}
     steps:
     - name: Harden runner
@@ -17,9 +18,7 @@ jobs:
       with:
         egress-policy: block
         allowed-endpoints: >
-          github.com:443
-          api.github.com:443
-          api.securityscorecards.dev:443
+          github.com:443 api.github.com:443 api.securityscorecards.dev:443
         #   cache.nixos.org:443
         #   install.determinate.systems:443
         #   *.s3.dualstack.us-east-2.amazonaws.com:443
