@@ -28,7 +28,7 @@ jobs:
       with:
         persist-credentials: false
     - name: Setup nix
-      uses: ./.github/actions/setup-secure-nix
+      uses: ./.github/actions/setup-nix
     # - name: Install nix
     #   uses: DeterminateSystems/nix-installer-action@v16
     #   with:
