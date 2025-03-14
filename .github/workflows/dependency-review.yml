@@ -1,6 +1,9 @@
 name: Dependency Review
 on: [pull_request, merge_group]
 permissions: {}
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
   dependency-review:
     runs-on: ubuntu-24.04-arm
