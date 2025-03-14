@@ -2,7 +2,10 @@ name: Build
 on: workflow_call
 permissions: {}
 jobs:
-  datapack:
+  build:
+    strategy:
+      matrix:
+        artifact: [{make-target: build-datapack, name: datapack, path-prefix: enderman-block}]
     runs-on: ubuntu-24.04-arm
     steps:
     - name: Harden runner
@@ -27,11 +30,11 @@ jobs:
         # Disable telemetry.
         diagnostic-endpoint: ""
     - name: Build datapack
-      run: nix develop .#build -c make build-datapack
+      run: nix develop .#build -c make ${{ matrix.artifact.make-target }}
     - name: Upload artifact
       uses: actions/upload-artifact@v4.6.1
       with:
-        name: datapack
-        path: enderman-block-*.zip
+        name: ${{ matrix.artifact.name }}
+        path: ${{ matrix.artifact.path-prefix }}-*.zip
         include-hidden-files: true
         if-no-files-found: error
