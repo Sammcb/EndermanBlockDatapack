@@ -3,14 +3,14 @@ on: workflow_call
 permissions: {}
 jobs:
   flake:
-    # runs-on: ubuntu-24.04-arm
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-24.04-arm
     steps:
     - name: Harden runner
       uses: step-security/harden-runner@v2.11.0
       with:
         egress-policy: block
-        allowed-endpoints: github.com:443 api.github.com:443 api.securityscorecards.dev:443 releases.nixos.org install.determinate.systems:443 *.s3.dualstack.us-east-2.amazonaws.com:443 releases.nixos.org:443 cache.nixos.org:443 api.flakehub.com:443
+        disable-telemetry: true
+        allowed-endpoints: github.com:443 api.github.com:443 releases.nixos.org install.determinate.systems:443 *.s3.dualstack.us-east-2.amazonaws.com:443 releases.nixos.org:443 cache.nixos.org:443 api.flakehub.com:443
     - name: Checkout repository
       uses: actions/checkout@v4.2.2
       with:
@@ -25,14 +25,14 @@ jobs:
         ignore-missing-flake-lock: false
         fail-mode: true
   checks:
-    # runs-on: ubuntu-24.04-arm
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-24.04-arm
     steps:
     - name: Harden runner
       uses: step-security/harden-runner@v2.11.0
       with:
         egress-policy: block
-        allowed-endpoints: github.com:443 api.github.com:443 api.securityscorecards.dev:443 releases.nixos.org install.determinate.systems:443 *.s3.dualstack.us-east-2.amazonaws.com:443 releases.nixos.org:443 cache.nixos.org:443 api.flakehub.com:443
+        disable-telemetry: true
+        allowed-endpoints: github.com:443 api.github.com:443 releases.nixos.org install.determinate.systems:443 *.s3.dualstack.us-east-2.amazonaws.com:443 releases.nixos.org:443 cache.nixos.org:443 api.flakehub.com:443
     - name: Checkout repository
       uses: actions/checkout@v4.2.2
       with:
@@ -42,14 +42,14 @@ jobs:
     - name: Flake checks
       run: nix flake check
   editorconfig:
-    # runs-on: ubuntu-24.04-arm
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-24.04-arm
     steps:
     - name: Harden runner
       uses: step-security/harden-runner@v2.11.0
       with:
         egress-policy: block
-        allowed-endpoints: github.com:443 api.github.com:443 api.securityscorecards.dev:443 releases.nixos.org install.determinate.systems:443 *.s3.dualstack.us-east-2.amazonaws.com:443 releases.nixos.org:443 cache.nixos.org:443 api.flakehub.com:443
+        disable-telemetry: true
+        allowed-endpoints: github.com:443 api.github.com:443 releases.nixos.org install.determinate.systems:443 *.s3.dualstack.us-east-2.amazonaws.com:443 releases.nixos.org:443 cache.nixos.org:443 api.flakehub.com:443
     - name: Checkout repository
       uses: actions/checkout@v4.2.2
       with:
@@ -59,8 +59,7 @@ jobs:
     - name: Lint editorconfig
       run: nix develop .#lintEditorconfig -c editorconfig-checker -f github-actions
   workflows:
-    # runs-on: ubuntu-24.04-arm
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-24.04-arm
     permissions:
       security-events: write
     steps:
@@ -68,7 +67,8 @@ jobs:
       uses: step-security/harden-runner@v2.11.0
       with:
         egress-policy: block
-        allowed-endpoints: github.com:443 api.github.com:443 api.securityscorecards.dev:443 releases.nixos.org install.determinate.systems:443 *.s3.dualstack.us-east-2.amazonaws.com:443 releases.nixos.org:443 cache.nixos.org:443 api.flakehub.com:443
+        disable-telemetry: true
+        allowed-endpoints: github.com:443 api.github.com:443 releases.nixos.org install.determinate.systems:443 *.s3.dualstack.us-east-2.amazonaws.com:443 releases.nixos.org:443 cache.nixos.org:443 api.flakehub.com:443
     - name: Checkout repository
       uses: actions/checkout@v4.2.2
       with:
