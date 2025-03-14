@@ -27,7 +27,7 @@ jobs:
         # Disable telemetry.
         diagnostic-endpoint: ""
     - name: Build datapack
-      run: nix run .#build -c make build-datapack
+      run: nix develop .#build -c make build-datapack
     - name: Upload artifact
       uses: actions/upload-artifact@v4.6.1
       with:
