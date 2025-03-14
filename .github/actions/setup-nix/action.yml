@@ -6,7 +6,7 @@ runs:
   - name: Install nix
     uses: DeterminateSystems/nix-installer-action@v16
     with:
-      # Commit corresponds to tag v0.30.0 and installs nix v2.24.0.
-      source-revision: b4bc792f575248e63e92c95cd9d334d01ba86b71
+      # Commit corresponds to tag v3.0.0 and installs nix v2.26.2.
+      source-revision: 560156e95edfb29e458c5ac5f8703dda6d1069b9
       # Disable telemetry.
       diagnostic-endpoint: ""
