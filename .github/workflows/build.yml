@@ -20,22 +20,15 @@ jobs:
           github.com:443
           api.github.com:443
           api.securityscorecards.dev:443
-          cache.nixos.org:443
-          install.determinate.systems:443
-          *.s3.dualstack.us-east-2.amazonaws.com:443
+        #   cache.nixos.org:443
+        #   install.determinate.systems:443
+        #   *.s3.dualstack.us-east-2.amazonaws.com:443
     - name: Checkout repository
       uses: actions/checkout@v4.2.2
       with:
         persist-credentials: false
     - name: Setup nix
       uses: ./.github/actions/setup-nix
-    # - name: Install nix
-    #   uses: DeterminateSystems/nix-installer-action@v16
-    #   with:
-    #     # Commit corresponds to tag v0.30.0 and installs nix v2.24.0.
-    #     source-revision: b4bc792f575248e63e92c95cd9d334d01ba86b71
-    #     # Disable telemetry.
-    #     diagnostic-endpoint: ""
     - name: Build ${{ matrix.artifact.name }}
       run: nix develop .#build -c make ${{ matrix.artifact.make-target }}
     - name: Upload artifact
