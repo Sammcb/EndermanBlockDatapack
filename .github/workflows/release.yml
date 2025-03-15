@@ -26,3 +26,5 @@ jobs:
     - run: ls -R
     - name: Attach artifacts to release
       run: nix develop .#releaseArtifacts -c gh release list --limit 1
+      env:
+        GH_TOKEN: ${{ github.token }}
