@@ -13,7 +13,7 @@ jobs:
     permissions:
       security-events: write
     concurrency:
-      group: ci-${{ github.workflow }}-${{ github.ref }}
+      group: ci
       cancel-in-progress: true
   release:
     runs-on: ubuntu-24.04-arm
