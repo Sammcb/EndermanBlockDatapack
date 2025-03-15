@@ -2,7 +2,7 @@ name: Dependency Review
 on: [pull_request, merge_group]
 permissions: {}
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}-${{ github.event_name }}
+  group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 jobs:
   dependency-review:
