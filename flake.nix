@@ -36,7 +36,7 @@
 					nativeBuildInputs = with pkgs; [editorconfig-checker];
 				};
 
-				devShells.releaseArtifact = pkgs.mkShell {
+				devShells.releaseArtifacts = pkgs.mkShell {
 					nativeBuildInputs = with pkgs; [gh];
 				};
 			};
