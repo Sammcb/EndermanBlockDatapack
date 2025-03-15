@@ -1,0 +1,23 @@
+name: Release
+on:
+  release:
+    types: [created, edited, prereleased, published, released]
+  pull_request:
+permissions: {}
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  ci:
+    uses: ./.github/workflows/ci.yml
+    permissions:
+      security-events: write
+  release:
+    runs-on: ubuntu-24.04-arm
+    needs: ci
+    steps:
+    - name: Download artifacts
+      uses: actions/download-artifact@cc203385981b70ca67e1cc392babf9cc229d5806 # v4.1.9
+      with:
+        merge-multiple: true
+    - run: ls -R
