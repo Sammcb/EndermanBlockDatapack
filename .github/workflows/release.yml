@@ -5,7 +5,7 @@ on:
   pull_request:
 permissions: {}
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}-${{ github.event_name }}
+  group: release-${{ github.workflow }}-${{ github.ref }}-${{ github.event_name }}
   cancel-in-progress: true
 jobs:
   ci:
