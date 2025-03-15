@@ -35,6 +35,10 @@
 				devShells.lintEditorconfig = pkgs.mkShell {
 					nativeBuildInputs = with pkgs; [editorconfig-checker];
 				};
+
+				devShells.releaseArtifact = pkgs.mkShell {
+					nativeBuildInputs = with pkgs; [gh];
+				};
 			};
 	};
 }

@@ -9,7 +9,7 @@ jobs:
         - name: datapack
           make-target: build-datapack
           path-prefix: enderman-block
-    runs-on: ubuntu-24.04-arm
+    runs-on: ubuntu-24.04
     name: ${{ matrix.artifact.name }}
     steps:
     - name: Harden runner
@@ -17,13 +17,22 @@ jobs:
       with:
         egress-policy: block
         disable-telemetry: true
-        allowed-endpoints: github.com:443 api.github.com:443 releases.nixos.org install.determinate.systems:443 *.s3.dualstack.us-east-2.amazonaws.com:443 releases.nixos.org:443 cache.nixos.org:443 api.flakehub.com:443
+        allowed-endpoints: github.com:443 api.github.com:443
+        # allowed-endpoints: github.com:443 api.github.com:443 releases.nixos.org install.determinate.systems:443 *.s3.dualstack.us-east-2.amazonaws.com:443 releases.nixos.org:443 cache.nixos.org:443 api.flakehub.com:443
     - name: Checkout repository
       uses: actions/checkout@v4.2.2
       with:
         persist-credentials: false
-    - name: Setup nix
-      uses: ./.github/actions/setup-nix
+    - name: Install nix
+      uses: nixbuild/nix-quick-install-action@5bb6a3b3abe66fd09bbf250dce8ada94f856a703 # v30
+      with:
+        nix_version: 2.26.2
+    - name: Restore from nix cache
+      uses: nix-community/cache-nix-action@c448f065ba14308da81de769632ca67a3ce67cf5 # v6
+      with:
+        primary-key: nix-${{ runner.os }}-${{ hashFiles('**/*.nix', '**/flake.lock') }}
+    # - name: Setup nix
+    #   uses: ./.github/actions/setup-nix
     - name: Build ${{ matrix.artifact.name }}
       run: nix develop .#build -c make ${{ matrix.artifact.make-target }}
     - name: Upload artifact
