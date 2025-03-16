@@ -1,0 +1,31 @@
+name: Release
+on:
+  release:
+    types: [created, edited, prereleased, published, released]
+permissions: {}
+concurrency:
+  group: release-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  ci:
+    uses: ./.github/workflows/ci.yml
+    permissions:
+      security-events: write
+  release:
+    runs-on: ubuntu-24.04-arm
+    permissions:
+      contents: write
+    needs: ci
+    steps:
+    - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      with:
+        persist-credentials: false
+    - uses: ./.github/actions/setup-nix
+    - uses: actions/download-artifact@cc203385981b70ca67e1cc392babf9cc229d5806 # v4.1.9
+      with:
+        merge-multiple: true
+    - name: Attach artifacts to release ${{ github.event.release.tag_name }}
+      run: nix develop .#releaseArtifacts -c gh release upload "${TAG_NAME}" enderman-block-*.zip
+      env:
+        GH_TOKEN: ${{ github.token }}
+        TAG_NAME: ${{ github.event.release.tag_name }}
