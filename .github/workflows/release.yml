@@ -23,8 +23,12 @@ jobs:
     - uses: actions/download-artifact@cc203385981b70ca67e1cc392babf9cc229d5806 # v4.1.9
       with:
         merge-multiple: true
-    - run: ls -R
     - name: Attach artifacts to release
       run: nix develop .#releaseArtifacts -c gh release list --limit 1
       env:
         GH_TOKEN: ${{ github.token }}
+    # - name: Attach artifacts to release
+    #   # run: nix develop .#releaseArtifacts -c gh release upload ${{ github.event.release.tag_name }} enderman-block-*.zip
+    #   run: nix develop .#releaseArtifacts -c gh release upload  enderman-block-*.zip
+    #   env:
+    #     GH_TOKEN: ${{ github.token }}
