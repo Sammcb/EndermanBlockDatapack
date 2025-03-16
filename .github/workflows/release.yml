@@ -26,6 +26,7 @@ jobs:
       with:
         merge-multiple: true
     - name: Attach artifacts to release ${{ github.event.release.tag_name }}
-      run: nix develop .#releaseArtifacts -c gh release upload ${{ github.event.release.tag_name }} enderman-block-*.zip
+      run: nix develop .#releaseArtifacts -c gh release upload "${TAG_NAME}" enderman-block-*.zip
       env:
         GH_TOKEN: ${{ github.token }}
+        TAG_NAME: ${{ github.event.release.tag_name }}
