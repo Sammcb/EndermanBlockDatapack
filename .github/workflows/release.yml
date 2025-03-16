@@ -27,8 +27,8 @@ jobs:
       run: nix develop .#releaseArtifacts -c gh release list --limit 1
       env:
         GH_TOKEN: ${{ github.token }}
-    # - name: Attach artifacts to release
-    #   # run: nix develop .#releaseArtifacts -c gh release upload ${{ github.event.release.tag_name }} enderman-block-*.zip
-    #   run: nix develop .#releaseArtifacts -c gh release upload  enderman-block-*.zip
-    #   env:
-    #     GH_TOKEN: ${{ github.token }}
+    - name: Attach artifacts to release
+      # run: nix develop .#releaseArtifacts -c gh release upload ${{ github.event.release.tag_name }} enderman-block-*.zip
+      run: nix develop .#releaseArtifacts -c gh release upload v0.0.0-test enderman-block-*.zip
+      env:
+        GH_TOKEN: ${{ github.token }}
