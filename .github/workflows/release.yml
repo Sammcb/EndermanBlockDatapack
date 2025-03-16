@@ -2,7 +2,6 @@ name: Release
 on:
   release:
     types: [created, edited, prereleased, published, released]
-  pull_request:
 permissions: {}
 concurrency:
   group: release-${{ github.workflow }}-${{ github.ref }}
