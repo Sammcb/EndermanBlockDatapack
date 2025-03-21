@@ -2,7 +2,6 @@
 .DEFAULT_GOAL: build
 
 DATAPACK_ZIP_NAME := enderman-block.zip
-CHECKSUMS_FILE_NAME := checksums.txt
 
 build: build-datapack
 
