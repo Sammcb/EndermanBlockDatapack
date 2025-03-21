@@ -20,24 +20,32 @@
 			let
 				flakeCheckerPackage = flake-checker.packages.${system}.default;
 			in {
-				devShells.default = pkgs.mkShell {
-					nativeBuildInputs = [flakeCheckerPackage] ++ (with pkgs; [gnumake zip editorconfig-checker zizmor]);
+				devShells.default = pkgs.mkShellNoCC {
+					nativeBuildInputs = [flakeCheckerPackage] ++ (with pkgs; [coreutils gnumake zip editorconfig-checker zizmor cosign]);
 				};
 
-				devShells.build = pkgs.mkShell {
+				devShells.build = pkgs.mkShellNoCC {
 					nativeBuildInputs = with pkgs; [gnumake zip];
 				};
 
-				devShells.lintWorkflows = pkgs.mkShell {
+				devShells.lintWorkflows = pkgs.mkShellNoCC {
 					nativeBuildInputs = with pkgs; [zizmor];
 				};
 
-				devShells.lintEditorconfig = pkgs.mkShell {
+				devShells.lintEditorconfig = pkgs.mkShellNoCC {
 					nativeBuildInputs = with pkgs; [editorconfig-checker];
 				};
 
-				devShells.releaseArtifacts = pkgs.mkShell {
+				devShells.releaseArtifacts = pkgs.mkShellNoCC {
 					nativeBuildInputs = with pkgs; [gh];
+				};
+
+				devShells.createChecksums = pkgs.mkShellNoCC {
+					nativeBuildInputs = with pkgs; [coreutils];
+				};
+
+				devShells.sign = pkgs.mkShellNoCC {
+					nativeBuildInputs = with pkgs; [cosign];
 				};
 			};
 	};
