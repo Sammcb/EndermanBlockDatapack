@@ -21,7 +21,7 @@
 				flakeCheckerPackage = flake-checker.packages.${system}.default;
 			in {
 				devShells.default = pkgs.mkShellNoCC {
-					nativeBuildInputs = [flakeCheckerPackage] ++ (with pkgs; [coreutils gnumake zip editorconfig-checker zizmor cosign]);
+					nativeBuildInputs = [flakeCheckerPackage] ++ (with pkgs; [coreutils gnumake zip editorconfig-checker zizmor cosign trufflehog]);
 				};
 
 				devShells.build = pkgs.mkShellNoCC {
@@ -46,6 +46,10 @@
 
 				devShells.sign = pkgs.mkShellNoCC {
 					nativeBuildInputs = with pkgs; [cosign];
+				};
+
+				devShells.scanSecrets = pkgs.mkShellNoCC {
+					nativeBuildInputs = with pkgs; [trufflehog];
 				};
 			};
 	};

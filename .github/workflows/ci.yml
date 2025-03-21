@@ -9,5 +9,7 @@ jobs:
     uses: ./.github/workflows/lint.yml
     permissions:
       security-events: write
+  secure:
+    uses: ./.github/workflows/secure.yml
   build:
     uses: ./.github/workflows/build.yml
