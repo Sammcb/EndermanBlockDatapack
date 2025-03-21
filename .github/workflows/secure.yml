@@ -10,6 +10,6 @@ jobs:
         persist-credentials: false
     - uses: ./.github/actions/setup-nix
     - name: Scan secrets
-      run: nix develop .#scanSecrets -c trufflehog git file://. --branch "${BRANCH}" --fail --no-update --github-actions
+      run: nix develop .#scanSecrets -c trufflehog git file://. --branch "${BRANCH}" --fail --github-actions
       env:
-        BRANCH: ${{ github.ref_name }}
+        BRANCH: ${{ github.ref }}
