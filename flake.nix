@@ -47,6 +47,10 @@
 				devShells.sign = pkgs.mkShellNoCC {
 					nativeBuildInputs = with pkgs; [cosign];
 				};
+
+				devShells.scanSecrets = pkgs.mkShellNoCC {
+					nativeBuildInputs = with pkgs; [trufflehog];
+				};
 			};
 	};
 }
