@@ -1,5 +1,5 @@
 .PHONY: build build-datapack clean lint
-.DEFAULT_GOAL: build
+.DEFAULT_GOAL := build
 
 DATAPACK_ZIP_NAME := enderman-block.zip
 
